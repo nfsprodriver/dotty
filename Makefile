@@ -15,7 +15,7 @@ all: dotty.desktop \
      share/locale/zh_CN/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dotty.mo
 
 click:
-	click build --ignore=Makefile --ignore=*.pot --ignore=*.po --ignore=*.qmlproject --ignore=*.qmlproject.user --ignore=*.in --ignore=po .
+	click build --ignore=Makefile --ignore=*.pot --ignore=*.po --ignore=*.qmlproject --ignore=*.qmlproject.user --ignore=*.in --ignore=po --ignore=*.sh .
 
 dotty.desktop: dotty.desktop.in po/*.po
 	msgfmt --desktop --template=dotty.desktop.in -d po/ -o $@
@@ -28,7 +28,7 @@ share/locale/%/LC_MESSAGES/com.ubuntu.developer.robert-ancell.dotty.mo: po/%.po
 	msgfmt -o $@ $<
 
 clean:
-	rm -f share/locale/*/*/*.mo dotty.desktop
+	rm -f share/locale/*/*/*.mo share/locale/*/*/.gitkeep dotty.desktop
 
 run:
 	/usr/bin/qmlscene $@ main.qml
