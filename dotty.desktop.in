@@ -1,0 +1,13 @@
+[Desktop Entry]
+# TRANSLATORS: Title of application
+Name=Dotty
+# TRANSLATORS: Single line description of application
+Comment=Link as many dots as you can in thirty moves
+# TRANSLATORS: Keywords used for finding this application
+Keywords=dots,puzzle
+Exec=qmlscene $@ main.qml
+Icon=dotty.png
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
+Name[de_DE]=dotty.desktop.in

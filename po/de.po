@@ -1,0 +1,158 @@
+# German translation for dotty
+# Copyright (c) 2016 Rosetta Contributors and Canonical Ltd 2016
+# This file is distributed under the same license as the dotty package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: dotty\n"
+"Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2016-07-04 21:17+1200\n"
+"PO-Revision-Date: 2016-07-15 23:39+0000\n"
+"Last-Translator: Matthias Seidel <matthias.seidel@hamburg.de>\n"
+"Language-Team: German <de@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Launchpad-Export-Date: 2016-09-27 07:06+0000\n"
+"X-Generator: Launchpad (build 18204)\n"
+
+#. TRANSLATORS: Title for dialog shown when starting a new game while one in progress
+#: main.qml:30
+msgid "Game in progress"
+msgstr "Ein Spiel ist aktiv"
+
+#. TRANSLATORS: Content for dialog shown when starting a new game while one in progress
+#: main.qml:32
+msgid "Are you sure you want to restart this game?"
+msgstr "Sind Sie sicher, dass Sie das Spiel neu starten möchten?"
+
+#. TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
+#: main.qml:35
+msgid "Restart game"
+msgstr "Spiel neu starten"
+
+#. TRANSLATORS: Button in new game dialog that cancels new game request
+#: main.qml:44
+msgid "Continue current game"
+msgstr "Aktives Spiel fortsetzen"
+
+#. TRANSLATORS: Title for dialog confirming if scores should be cleared
+#. TRANSLATORS: Button in clear scores dialog that clears scores
+#. TRANSLATORS: Action in high scores page that clears scores
+#: main.qml:55 main.qml:60 main.qml:578
+msgid "Clear scores"
+msgstr "Punktestände löschen"
+
+#. TRANSLATORS: Content for dialog confirming if scores should be cleared
+#: main.qml:57
+msgid "Existing scores will be deleted. This cannot be undone."
+msgstr ""
+"Die aktuellen Punktestände werden gelöscht. Das kann nicht rückgängig "
+"gemacht werden."
+
+#. TRANSLATORS: Button in clear scores dialog that cancels clear scores request
+#: main.qml:69
+msgid "Keep existing scores"
+msgstr "Aktuelle Punktestände behalten"
+
+#. TRANSLATORS: Title of application
+#: main.qml:83 dotty.desktop.in:4
+msgid "Dotty"
+msgstr "Dotty"
+
+#. TRANSLATORS: Action on main page that shows game instructions
+#. TRANSLATORS: Title of page with game instructions
+#: main.qml:88 main.qml:545
+msgid "How to Play"
+msgstr "Spielanleitung"
+
+#. TRANSLATORS: Action on main page that shows high score dialog
+#. TRANSLATORS: Title of page showing high scores
+#: main.qml:94 main.qml:572
+msgid "High Scores"
+msgstr "Bestenliste"
+
+#. TRANSLATORS: Action on main page that starts a new game
+#: main.qml:103
+msgid "New Game"
+msgstr "Neues Spiel"
+
+#. TRANSLATORS: Label underneath dot that contains the number of moves left in this game
+#: main.qml:131
+msgid "Moves Left"
+msgstr "Züge übrig"
+
+#. TRANSLATORS: Label underneath dot that contains the number of dots cleared in the current game
+#: main.qml:145
+msgid "Dots Cleared"
+msgstr "Punkte gelöscht"
+
+#. TRANSLATORS: Label shown below high score for a score just achieved
+#: main.qml:348
+msgid "Now"
+msgstr "Jetzt"
+
+#. TRANSLATORS: Label shown below high score for a score achieved seconds ago
+#: main.qml:353
+msgid "%n second ago"
+msgid_plural "%n seconds ago"
+msgstr[0] "vor %n Sekunde"
+msgstr[1] "vor %n Sekunden"
+
+#. TRANSLATORS: Label shown below high score for a score achieved minutes ago
+#: main.qml:359
+msgid "%n minute ago"
+msgid_plural "%n minutes ago"
+msgstr[0] "vor %n Minute"
+msgstr[1] "vor %n Minuten"
+
+#. TRANSLATORS: Label shown below high score for a score achieved hours ago
+#: main.qml:365
+msgid "%n hour ago"
+msgid_plural "%n hours ago"
+msgstr[0] "vor %n Stunde"
+msgstr[1] "vor %n Stunden"
+
+#. TRANSLATORS: Label shown below high score for a score achieved days ago
+#: main.qml:371
+msgid "%n day ago"
+msgid_plural "%n days ago"
+msgstr[0] "vor %n Tag"
+msgstr[1] "vor %n Tagen"
+
+#. TRANSLATORS: Game instructions
+#: main.qml:554
+msgid ""
+"<p><i>Dotty</i> is a game where the goal is to clear as many dots in 30 "
+"turns.</p><br/><p>To link dots drag your finger / cursor between adjacent "
+"dots of the same color (horizontally or vertically). The dots you link will "
+"be removed and new dots will drop in from the top. The number of dots "
+"cleared is added to your total - clear as many as possible!</p><br/><p>If "
+"you can link the dots in a loop all the dots of that color will be cleared! "
+"In addition, the replacement dots will not be of the color you cleared which "
+"will make it more likely to get another loop. Loops are the best way to get "
+"high scores.</p><br/><p>Have fun!</p>"
+msgstr ""
+"<p><i>Dotty</i> ist ein Spiel mit dem Ziel in 30 Zügen so viele Punkte wie "
+"möglich zu löschen.</p><br/><p>Um Punkte zu verbinden, ziehen Sie Ihren "
+"Finger/Cursor zu benachbarten Punkten der gleichen Farbe (horizontal oder "
+"vertikal). Die verbundenen Punkte werden gelöscht und neue Punkte fallen von "
+"oben herab. Die Anzahl der gelöschten Punkte wird zu Ihrer Punktzahl addiert "
+"- löschen Sie so viele wie möglich!</p><br/><p>Wenn Sie Punkte in einer "
+"Schleife verbinden können, dann werden alle Punkte dieser Farbe gelöscht! "
+"Zusätzlich werden bei den nach fallenden Punkten keine der gelöschten Farbe "
+"dabei sein, was es wahrscheinlicher machen wird eine neue Schleife zu "
+"bekommen. Schleifen sind der beste Weg um Höchstpunktzahlen zu "
+"erreichen.</p><br/><p>Viel Spaß!</p>"
+
+#. TRANSLATORS: Single line description of application
+#: dotty.desktop.in:6
+msgid "Link as many dots as you can in thirty moves"
+msgstr "Verbinden Sie so viele Punkte, wie Sie in dreißig Zügen können"
+
+#. TRANSLATORS: Keywords used for finding this application
+#: dotty.desktop.in:8
+msgid "dots,puzzle"
+msgstr "Punkte, Puzzle"

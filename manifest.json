@@ -1,0 +1,15 @@
+{
+    "architecture": "all",
+    "description": "Link dots to score points",
+    "framework": "ubuntu-sdk-15.04",
+    "hooks": {
+        "dotty": {
+            "apparmor": "dotty.apparmor",
+            "desktop": "dotty.desktop"
+        }
+    },
+    "maintainer": "Robert Ancell <robert.ancell@canonical.com>",
+    "name": "com.ubuntu.developer.robert-ancell.dotty",
+    "title": "Dotty",
+    "version": "20"
+}
