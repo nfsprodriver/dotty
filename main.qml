@@ -12,6 +12,7 @@ import QtQuick.Layouts 1.1
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
 import QtQuick.LocalStorage 2.0
+import Qt.labs.settings 1.0
 
 MainView {
     applicationName: "com.ubuntu.developer.robert-ancell.dotty"
@@ -21,6 +22,11 @@ MainView {
     width: units.gu (40)
     height: units.gu (71)
     property bool isHorizontal: width > height
+
+    Settings {
+        id: settings
+        property int dotsCount: 6
+    }
 
     Component {
         id: confirm_new_game_dialog
@@ -52,7 +58,7 @@ MainView {
         Dialog {
             id: d
             // TRANSLATORS: Title for dialog confirming if scores should be cleared
-            title: i18n.tr ("Clear scores")
+            title: i18n.tr ("Clear scores for") + " " + settings.dotsCount + "x" + settings.dotsCount
             // TRANSLATORS: Content for dialog confirming if scores should be cleared
             text: i18n.tr ("Existing scores will be deleted. This cannot be undone.")
             Button {
@@ -74,7 +80,10 @@ MainView {
 
     PageStack {
         id: page_stack
-        Component.onCompleted: push (main_page)
+        Component.onCompleted: {
+            push (main_page)
+            size.value = settings.dotsCount
+        }
 
         Page {
             id: main_page
@@ -82,7 +91,26 @@ MainView {
             // TRANSLATORS: Title of application
             title: i18n.tr ("Dotty")
             head.actions:
-            [
+                [
+                Action {
+                    // TRANSLATORS: Action on main page that starts a new game
+                    text: i18n.tr ("New Game")
+                    iconName: "reload"
+                    onTriggered: {
+                        if (table.n_cleared > 0 && table.n_moves > 0)
+                            PopupUtils.open (confirm_new_game_dialog)
+                        else
+                            table.start_game ()
+                    }
+                },
+                Action {
+                    // TRANSLATORS: Action on main page that starts a new game
+                    text: i18n.tr ("Settings")
+                    iconName: "settings"
+                    onTriggered: {
+                        page_stack.push (settings_page)
+                    }
+                },
                 Action {
                     // TRANSLATORS: Action on main page that shows game instructions
                     text: i18n.tr ("How to Play")
@@ -97,24 +125,13 @@ MainView {
                         table.update_scores ()
                         page_stack.push (scores_page)
                     }
-                },
-                Action {
-                    // TRANSLATORS: Action on main page that starts a new game
-                    text: i18n.tr ("New Game")
-                    iconName: "reload"
-                    onTriggered: {
-                        if (table.n_cleared > 0 && table.n_moves > 0)
-                            PopupUtils.open (confirm_new_game_dialog)
-                        else
-                            table.start_game ()
-                    }
                 }
             ]
 
             Item {
                 anchors.fill: parent
 
-                property var circle_radius: units.gu (5)
+                property var circle_radius: units.gu (4.3)
                 property var circle_spacing: (isHorizontal ? height - moves_circle.height - score_circle.height : width - moves_circle.width - score_circle.width) / 3
 
                 CountCircle {
@@ -143,6 +160,13 @@ MainView {
                     textColor: "white"
                     // TRANSLATORS: Label underneath dot that contains the number of dots cleared in the current game
                     text: i18n.tr ("Dots Cleared")
+                }
+
+                Text {
+                    text: settings.dotsCount + "x" + settings.dotsCount
+                    anchors.bottom: parent.bottom
+                    anchors.horizontalCenter: table.horizontalCenter
+                    anchors.bottomMargin: units.gu(1)
                 }
 
                 Item {
@@ -246,10 +270,10 @@ MainView {
 
                         // Clear all the selected dots
                         for (var i = 0; i < selected_dots.length; i++) {
-                             var dot = selected_dots[i]
-                             dots[dot.x_coord][dot.y_coord] = undefined
-                             dot.destroy ()
-                             n_cleared++
+                            var dot = selected_dots[i]
+                            dots[dot.x_coord][dot.y_coord] = undefined
+                            dot.destroy ()
+                            n_cleared++
                         }
                         clear_selection ()
 
@@ -299,7 +323,7 @@ MainView {
                     }
 
                     function get_database () {
-                        return LocalStorage.openDatabaseSync ("scores", "1", "Dotty Scores", 0)
+                        return LocalStorage.openDatabaseSync (settings.dotsCount === 6 ? "scores" : ("scores" + settings.dotsCount.toString()), "1", "Dotty Scores", 0)
                     }
 
                     function update_scores () {
@@ -355,19 +379,19 @@ MainView {
                         var minutes = seconds / 60
                         if (minutes < 120) {
                             var n_minutes = Math.floor (minutes)
-                            // TRANSLATORS: Label shown below high score for a score achieved minutes ago                            
+                            // TRANSLATORS: Label shown below high score for a score achieved minutes ago
                             return i18n.tr ("%n minute ago", "%n minutes ago", n_minutes).replace ("%n", n_minutes)
                         }
                         var hours = minutes / 60
                         if (hours < 48) {
                             var n_hours = Math.floor (hours)
-                            // TRANSLATORS: Label shown below high score for a score achieved hours ago                            
+                            // TRANSLATORS: Label shown below high score for a score achieved hours ago
                             return i18n.tr ("%n hour ago", "%n hours ago", n_hours).replace ("%n", n_hours)
                         }
                         var days = hours / 24
                         if (days < 30) {
                             var n_days = Math.floor (days)
-                            // TRANSLATORS: Label shown below high score for a score achieved days ago                            
+                            // TRANSLATORS: Label shown below high score for a score achieved days ago
                             return i18n.tr ("%n day ago", "%n days ago", n_days).replace ("%n", n_days)
                         }
                         if (date.getFullYear () != now.getFullYear ())
@@ -402,8 +426,8 @@ MainView {
                     function fill (exclude_color) {
                         var new_colors = []
                         for (var i = 0; i < colors.length; i++)
-                                if (colors[i] != exclude_color)
-                                        new_colors[new_colors.length] = colors[i]
+                            if (colors[i] != exclude_color)
+                                new_colors[new_colors.length] = colors[i]
 
                         // Add in new dots
                         var new_dots = []
@@ -440,11 +464,11 @@ MainView {
                         // If no there are no possible dots to link then make one of the new
                         // dots match an adjacent one
                         if (!can_link ()) {
-                             var new_dot = new_dots[Math.floor (Math.random () * new_dots.length)]
-                             if (new_dot.y_coord == 0)
-                                 new_dot.color = dots[new_dot.x_coord][new_dot.y_coord + 1].color
-                             else
-                                 new_dot.color = dots[new_dot.x_coord][new_dot.y_coord - 1].color
+                            var new_dot = new_dots[Math.floor (Math.random () * new_dots.length)]
+                            if (new_dot.y_coord == 0)
+                                new_dot.color = dots[new_dot.x_coord][new_dot.y_coord + 1].color
+                            else
+                                new_dot.color = dots[new_dot.x_coord][new_dot.y_coord - 1].color
                         }
                     }
 
@@ -467,7 +491,7 @@ MainView {
 
                     function clear_selection () {
                         for (var i = 0; i < lines.length; i++)
-                             lines[i].destroy ()
+                            lines[i].destroy ()
                         lines = []
                         selected_dots = []
                     }
@@ -528,9 +552,9 @@ MainView {
                         table.line_component = Qt.createComponent ("Line.qml")
                         //if (line_component.status == Component.Ready)
 
-                        dots = new Array (6)
-                        for (var x = 0; x < 6; x++)
-                            dots[x] = new Array (6)
+                        dots = new Array (settings.dotsCount)
+                        for (var x = 0; x < settings.dotsCount; x++)
+                            dots[x] = new Array (settings.dotsCount)
                         table.start_game ()
                         layout ()
                     }
@@ -569,13 +593,13 @@ Loops are the best way to get high scores.</p>\
             id: scores_page
             visible: false
             // TRANSLATORS: Title of page showing high scores
-            title: i18n.tr ("High Scores")
+            title: i18n.tr ("High Scores for") + " " + settings.dotsCount + "x" + settings.dotsCount
 
             head.actions:
-            [
+                [
                 Action {
                     // TRANSLATORS: Action in high scores page that clears scores
-                    text: i18n.tr ("Clear scores")
+                    text: i18n.tr ("Clear scores for") + " " + settings.dotsCount + "x" + settings.dotsCount
                     iconName: "reset"
                     onTriggered: PopupUtils.open (confirm_clear_scores_dialog)
                 }
@@ -615,6 +639,53 @@ Loops are the best way to get high scores.</p>\
                 y: parent.height * 0.8 - height * 0.5
                 color: table.colors[4]
                 size: units.gu (6)
+            }
+        }
+
+        Page {
+            id: settings_page
+            visible: false
+            // TRANSLATORS: Title of page showing settings
+            title: i18n.tr ("Settings")
+            onVisibleChanged: {
+                for (var x = 0; x < table.dots.length; x++) {
+                    for (var y = 0; y < table.dots[0].length; y++) {
+                        if (table.dots[x][y] != undefined) {
+                            table.dots[x][y].destroy ()
+                            table.dots[x][y] = undefined
+                        }
+                    }
+                }
+
+                table.dots = new Array (settings.dotsCount)
+                for (var x = 0; x < settings.dotsCount; x++)
+                    table.dots[x] = new Array (settings.dotsCount)
+                table.start_game ()
+                table.layout ()
+            }
+
+            Slider {
+                id: size
+                anchors.horizontalCenter: parent.horizontalCenter
+                width: parent.width - units.gu(6)
+                minimumValue: 4.0
+                maximumValue: 12.4
+                stepSize: 1.0
+                value: settings.dotsCount
+                live: true
+                onValueChanged: {
+                    settings.dotsCount = value.toFixed(0)
+
+                    if (units.gu(settings.dotsCount * 5.1) > Math.min(table.width, table.height))
+                        size_value.text = i18n.tr ("Playground grid:") + " " + settings.dotsCount + "x" + settings.dotsCount + "<br>" + i18n.tr ("Not recommended for your screen!")
+                    else size_value.text = i18n.tr ("Playground grid:") + " " + settings.dotsCount + "x" + settings.dotsCount
+                }
+            }
+            Text {
+                id: size_value
+                text: i18n.tr ("Playground grid:") + " " + settings.dotsCount + "x" + settings.dotsCount
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: size.bottom
             }
         }
     }
