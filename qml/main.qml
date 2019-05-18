@@ -11,6 +11,7 @@ import QtQuick 2.4
 import QtQuick.Layouts 1.1
 import Ubuntu.Components 1.3
 import Ubuntu.Components.Popups 1.3
+import Ubuntu.Components.Themes 1.3
 import QtQuick.LocalStorage 2.0
 import Qt.labs.settings 1.0
 
@@ -120,7 +121,7 @@ MainView {
                 Action {
                     // TRANSLATORS: Action on main page that shows high score dialog
                     text: i18n.tr ("High Scores")
-                    iconSource: "high-scores.svg"
+                    iconSource: "../assets/high-scores.svg"
                     onTriggered: {
                         table.update_scores ()
                         page_stack.push (scores_page)
@@ -164,6 +165,7 @@ MainView {
 
                 Text {
                     text: settings.dotsCount + "x" + settings.dotsCount
+                    color: theme.palette.normal.backgroundText
                     anchors.bottom: parent.bottom
                     anchors.horizontalCenter: table.horizontalCenter
                     anchors.bottomMargin: units.gu(1)
@@ -684,6 +686,7 @@ Loops are the best way to get high scores.</p>\
             Text {
                 id: size_value
                 text: i18n.tr ("Playground grid:") + " " + settings.dotsCount + "x" + settings.dotsCount
+                color: theme.palette.normal.backgroundText
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.top: size.bottom
             }

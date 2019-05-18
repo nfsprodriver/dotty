@@ -1,14 +1,14 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# This file is distributed under the same license as the com.ubuntu.developer.robert-ancell.dotty package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: com.ubuntu.developer.robert-ancell.dotty\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-09-05 18:08+0200\n"
+"POT-Creation-Date: 2019-05-18 19:43+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,118 +19,118 @@ msgstr ""
 "Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
 
 #. TRANSLATORS: Title for dialog shown when starting a new game while one in progress
-#: main.qml:36
+#: ../qml/main.qml:37
 msgid "Game in progress"
 msgstr ""
 
 #. TRANSLATORS: Content for dialog shown when starting a new game while one in progress
-#: main.qml:38
+#: ../qml/main.qml:39
 msgid "Are you sure you want to restart this game?"
 msgstr ""
 
 #. TRANSLATORS: Button in new game dialog that cancels the current game and starts a new one
-#: main.qml:41
+#: ../qml/main.qml:42
 msgid "Restart game"
 msgstr ""
 
 #. TRANSLATORS: Button in new game dialog that cancels new game request
-#: main.qml:50
+#: ../qml/main.qml:51
 msgid "Continue current game"
 msgstr ""
 
 #. TRANSLATORS: Title for dialog confirming if scores should be cleared
 #. TRANSLATORS: Action in high scores page that clears scores
-#: main.qml:61 main.qml:602
+#: ../qml/main.qml:62 ../qml/main.qml:604
 msgid "Clear scores for"
 msgstr ""
 
 #. TRANSLATORS: Content for dialog confirming if scores should be cleared
-#: main.qml:63
+#: ../qml/main.qml:64
 msgid "Existing scores will be deleted. This cannot be undone."
 msgstr ""
 
 #. TRANSLATORS: Button in clear scores dialog that clears scores
-#: main.qml:66
+#: ../qml/main.qml:67
 msgid "Clear scores"
 msgstr ""
 
 #. TRANSLATORS: Button in clear scores dialog that cancels clear scores request
-#: main.qml:75
+#: ../qml/main.qml:76
 msgid "Keep existing scores"
 msgstr ""
 
 #. TRANSLATORS: Title of application
-#: main.qml:92 dotty.desktop.in:4
+#: ../qml/main.qml:93 dotty.desktop.in.h:2
 msgid "Dotty"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that starts a new game
-#: main.qml:97
+#: ../qml/main.qml:98
 msgid "New Game"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that starts a new game
 #. TRANSLATORS: Title of page showing settings
-#: main.qml:108 main.qml:649
+#: ../qml/main.qml:109 ../qml/main.qml:651
 msgid "Settings"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that shows game instructions
 #. TRANSLATORS: Title of page with game instructions
-#: main.qml:116 main.qml:569
+#: ../qml/main.qml:117 ../qml/main.qml:571
 msgid "How to Play"
 msgstr ""
 
 #. TRANSLATORS: Action on main page that shows high score dialog
-#: main.qml:122
+#: ../qml/main.qml:123
 msgid "High Scores"
 msgstr ""
 
 #. TRANSLATORS: Label underneath dot that contains the number of moves left in this game
-#: main.qml:148
+#: ../qml/main.qml:149
 msgid "Moves Left"
 msgstr ""
 
 #. TRANSLATORS: Label underneath dot that contains the number of dots cleared in the current game
-#: main.qml:162
+#: ../qml/main.qml:163
 msgid "Dots Cleared"
 msgstr ""
 
 #. TRANSLATORS: Label shown below high score for a score just achieved
-#: main.qml:372
+#: ../qml/main.qml:374
 msgid "Now"
 msgstr ""
 
 #. TRANSLATORS: Label shown below high score for a score achieved seconds ago
-#: main.qml:377
+#: ../qml/main.qml:379
 msgid "%n second ago"
 msgid_plural "%n seconds ago"
 msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: Label shown below high score for a score achieved minutes ago
-#: main.qml:383
+#: ../qml/main.qml:385
 msgid "%n minute ago"
 msgid_plural "%n minutes ago"
 msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: Label shown below high score for a score achieved hours ago
-#: main.qml:389
+#: ../qml/main.qml:391
 msgid "%n hour ago"
 msgid_plural "%n hours ago"
 msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: Label shown below high score for a score achieved days ago
-#: main.qml:395
+#: ../qml/main.qml:397
 msgid "%n day ago"
 msgid_plural "%n days ago"
 msgstr[0] ""
 msgstr[1] ""
 
 #. TRANSLATORS: Game instructions
-#: main.qml:578
+#: ../qml/main.qml:580
 msgid ""
 "<p><i>Dotty</i> is a game where the goal is to clear as many dots in 30 "
 "turns.</p><br/><p>To link dots drag your finger / cursor between adjacent "
@@ -144,24 +144,14 @@ msgid ""
 msgstr ""
 
 #. TRANSLATORS: Title of page showing high scores
-#: main.qml:596
+#: ../qml/main.qml:598
 msgid "High Scores for"
 msgstr ""
 
-#: main.qml:680 main.qml:681 main.qml:686
+#: ../qml/main.qml:682 ../qml/main.qml:683 ../qml/main.qml:688
 msgid "Playground grid:"
 msgstr ""
 
-#: main.qml:680
+#: ../qml/main.qml:682
 msgid "Not recommended for your screen!"
-msgstr ""
-
-#. TRANSLATORS: Single line description of application
-#: dotty.desktop.in:6
-msgid "Link as many dots as you can in thirty moves"
-msgstr ""
-
-#. TRANSLATORS: Keywords used for finding this application
-#: dotty.desktop.in:8
-msgid "dots,puzzle"
 msgstr ""
