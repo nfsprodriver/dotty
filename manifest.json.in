@@ -9,7 +9,7 @@
             "desktop": "dotty.desktop"
         }
     },
-    "version": "22",
+    "version": "23",
     "maintainer": "Robert Ancell <robert.ancell@canonical.com>",
     "framework": "ubuntu-sdk-16.04"
 }
